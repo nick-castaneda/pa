@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-######## New Gems
+######## New Gems #######
 gem "minitest-reporters"
 gem "faker"
 gem 'bootstrap-sass', '~> 3.2.0'
