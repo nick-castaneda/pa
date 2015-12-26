@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+######## New Gems
+gem "minitest-reporters"
+gem "faker"
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap_form'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

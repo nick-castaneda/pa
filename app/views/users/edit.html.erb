@@ -1,0 +1,31 @@
+<h1>Edit Profile</h1>
+
+<%= form_for @user do |user| %>
+
+  <div>
+    <%= user.label :name %>
+    <%= user.text_field :name %>
+  </div>
+
+  <div>
+    <%= user.label :party_id %>
+    <%= user.text_field :party_id %>
+  </div>
+
+  <div>
+    <%= user.label :city %>
+    <%= user.text_field :city %>
+  </div>
+
+  <div>
+    <%= user.label :state %>
+    <%= user.text_field :state %>
+  </div>
+
+  <div>
+    <%= user.submit "Update!" %>
+  </div>
+
+<% end %>
+
+<%= link_to 'Back to User Page', user_path %>

@@ -1,0 +1,54 @@
+<div class='col-md-4'></div>
+<div class='col-md-4'>
+<h1>Register</h1>
+
+<%= form_for(@user) do |user| %>
+
+  <!-- FIGURE OUT EXACTLY HOW FLASH WORKS -->
+  <% flash.each do |key,value| %>
+    <div class="<%= key %>" > <%= value %> </div>
+  <% end %>
+
+  <div>
+    <%= user.label :name %>
+    <%= user.text_field :name %>
+  </div>
+
+  <div>
+    <%= user.label :email %>
+    <%= user.email_field :email %>
+  </div>
+
+  <div>
+    <%= user.label :password %>
+    <%= user.password_field :password %>
+  </div>
+
+  <div>
+    <%= user.label :password_confirmation, "Confirmation" %>
+    <%= user.password_field :password_confirmation %>
+  </div>
+
+  <div>
+    <%= user.label :party_id %>
+    <%= user.text_field :party_id %>
+  </div>
+
+  <div>
+    <%= user.label :city %>
+    <%= user.text_field :city %>
+  </div>
+
+  <div>
+    <%= user.label :state %>
+    <%= user.text_field :state %>
+  </div>
+
+
+  <div>
+    <%= user.submit "Submit!" %>
+  </div>
+
+<% end %>
+</div>
+<div class='col-md-3'></div>
