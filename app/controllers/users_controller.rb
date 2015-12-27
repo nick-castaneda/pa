@@ -13,8 +13,8 @@ end
 
 def create
   @user = User.new(user_params)
-
   if @user.save
+    log_in @user
     redirect_to user_path(@user)
   else
     flash[:error] = "Fill out all boxes!"
