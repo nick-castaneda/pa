@@ -48,6 +48,6 @@ end
 
 private
   def user_params
-    params.require(:user).permit(:email, :password_digest, :name, :party_id, :city, :state)
+    params.require(:user).permit(:email, :password, :password_confirmation, :name, :party_id, :city, :state)
   end
 end
