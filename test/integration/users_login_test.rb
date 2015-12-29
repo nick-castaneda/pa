@@ -2,11 +2,12 @@ require 'test_helper'
 
 class UsersLoginTest < ActionDispatch::IntegrationTest
 
+  # Creates a fake user michael for tests
   def setup
     @user = users(:michael)
   end
 
-# I need to come back and study this test.
+  # I need to come back and study this test.
   test "login with invalid information" do
     get login_path
     assert_template 'sessions/new'
@@ -17,6 +18,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert flash.empty?
   end
 
+  # I need to come back and study this test.
   test "login with valid information followed by logout" do
     get login_path
     post login_path, session: { email: @user.email, password: 'password' }
@@ -36,6 +38,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 #    assert_select "a[href=?]", user_path(@user), count: 0    Doesn't pass
   end
 
+  # I need to come back and study this test.
   test "valid signup information" do
     get new_user_path
     assert_difference 'User.count', 1 do
