@@ -14,11 +14,13 @@
  *= require_self
  */
 
+/* Eventually I need to clean this up or split it into sep files      */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 body{
-  background-color: #333333;
+  background-color: #052E5D;
   color: white;
   font-family: 'Montserrat', sans-serif;
 }

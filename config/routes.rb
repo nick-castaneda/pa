@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  # Routes for users
   root 'users#index'
   get 'users/index' => 'users#index', as: :users
 

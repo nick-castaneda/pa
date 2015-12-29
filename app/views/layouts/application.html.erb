@@ -2,15 +2,19 @@
 <html>
 <head>
   <title>Pannotate</title>
+  <!-- Rails links to the the stylesheet, javascript, and csrf? -->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!-- External link to Monserrat font -->
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+  <!-- Sets up jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
 
 <div class="container">
+  <!-- For error messages -->
   <% flash.each do |message_type, message| %>
     <div class="alert alert-<%= message_type %>"><%= message %></div>
   <% end %>
