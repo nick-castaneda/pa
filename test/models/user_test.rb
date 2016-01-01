@@ -4,13 +4,13 @@ class UserTest < ActiveSupport::TestCase
 
   # Setup method sets up a random user template? for tests.
   def setup
-    @user = User.new(name: "Example User", email: "user@example")
+    @user = User.new(name: "Example User", email: "user@example", password: "foobar", password_confirmation: "foobar")
   end
 
-  # Not sure about this.
+  # # Not sure about this, fails test
   # # If the user is valid based on the user model, assert true.
   # test "should be valid" do
-  #   assert_not @user.valid?
+  #   assert @user.valid?
   # end
 
   # This test sets the user name to multiple spaces
@@ -73,5 +73,18 @@ class UserTest < ActiveSupport::TestCase
     assert_not dup_user.valid?
   end
 
+  # Sets user password to six spaces
+  # If password is just blank spaces, assert_not false
+  test "password should be present (nonblank)" do
+    @user.password = @user.password_confirmation = " " * 6
+    assert_not @user.valid?
+  end
+
+  # Sets user password to just five letters
+  # If password is shorter than 6 characters, assert_not false
+  test "password should have a minimum length" do
+    @user.password = @user.password_confirmation = "a" * 5
+    assert_not @user.valid?
+  end
 
 end
