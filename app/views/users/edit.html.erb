@@ -1,4 +1,7 @@
 <% provide(:title, "Edit Profile") %>
+
+<%= render 'layouts/header' %>
+
 <h1>Edit Profile</h1>
 
 <%= form_for @user do |user| %>
@@ -6,6 +9,11 @@
   <div>
     <%= user.label :name %>
     <%= user.text_field :name %>
+  </div>
+
+  <div>
+    <%= user.label :prof_pic_url %>
+    <%= user.text_field :prof_pic_url %>
   </div>
 
   <div>

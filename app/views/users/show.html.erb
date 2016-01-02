@@ -1,18 +1,30 @@
 <% provide(:title, @user.name) %>
 <%= render 'layouts/header' %>
 
-<h1><%= @user.name %></h1>
-<h3><%= @user.email %></h3>
 
-<ul>
-<% if logged_in? %>
-  <li><%= link_to "Edit Profile", edit_user_path %></li>
-  <li><%= link_to "Delete Profile", user_path, method: :delete %></li>
-  <li><%= link_to "Log out", logout_path, method: :delete %></li>
-<% else %>
-  <li><%= link_to "My Profile", user_path(@user) %></li>
-<% end %>
+<div class="container miss_header">
+  <div class="row">
+    <h1><%= @user.name %></h1>
+    <div class="col-md-5 col-md-offset-2">
+      <br>
+      <p>Email: <%= @user.email %></p><br>
+      <p>Location: <%= @user.city %>, <%= @user.state %></p><br>
+      <br><br>
+      <p>Posts</p>
+    </div>
+    <div class="col-md-3">
+      <div id="prof_image_div"><%= image_tag @user.prof_pic_url, id: "prof_image" %></div>
+      <br>
+      <ul>
+      <% if logged_in? %>
+        <li><%= link_to "Edit Profile", edit_user_path %></li>
+        <li><%= link_to "Delete Profile", user_path, method: :delete %></li>
+        <li><%= link_to "Log out", logout_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "My Profile", user_path(@user) %></li>
+      <% end %>
+      </ul>
+    <div>
 
-
-<li><%= link_to "Back to Home", users_path %></li>
-<ul>
+  </div>
+</div>

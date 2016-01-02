@@ -56,6 +56,6 @@ private
   # User_params requires that a user is dealt with and permit allows
   # you to edit and the attribute fields of user.
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :name, :party_id, :city, :state)
+    params.require(:user).permit(:email, :password, :password_confirmation, :name, :prof_pic_url, :party_id, :city, :state)
   end
 end
