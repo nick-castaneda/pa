@@ -13,18 +13,18 @@ class UsersController < ApplicationController
   # The new and create methods make a user based on the attributes
   # defined in the private user_params method. If the user is
   # sucessfully created, the user is loged in through the log_in
-  # function from _________ and the user's prof page is loaded.  If the
-  # registration fails, an error flashes and the new user page reloads.
+  # function from _________, success flashes, and the user's prof page
+  # is loaded.  If the registration fails, the new user page reloads.
   def new
     @user = User.new
   end
   def create
     @user = User.new(user_params)
     if @user.save
+      flash[:success] = "Welcome to the Sample App!"
       log_in @user
       redirect_to user_path(@user)
     else
-      flash[:error] = "Fill out all boxes!"
       render :new
     end
   end
@@ -54,7 +54,9 @@ class UsersController < ApplicationController
 
 private
   # User_params requires that a user is dealt with and permit allows
-  # you to edit and the attribute fields of user.
+  # you to edit and the attribute fields of user. You do it this way,
+  # because you params[:user] returns a hash and you also don't want to
+  # mess with all the params (like "id").
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :name, :prof_pic_url, :party_id, :city, :state)
   end

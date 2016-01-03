@@ -8,31 +8,31 @@
 
   <div>
     <%= user.label :name %>
-    <%= user.text_field :name %>
+    <%= user.text_field :name, class: 'black_text' %>
   </div>
 
   <div>
     <%= user.label :prof_pic_url %>
-    <%= user.text_field :prof_pic_url %>
+    <%= user.text_field :prof_pic_url, class: 'black_text' %>
   </div>
 
   <div>
     <%= user.label :party_id %>
-    <%= user.text_field :party_id %>
+    <%= user.text_field :party_id, class: 'black_text' %>
   </div>
 
   <div>
     <%= user.label :city %>
-    <%= user.text_field :city %>
+    <%= user.text_field :city, class: 'black_text' %>
   </div>
 
   <div>
     <%= user.label :state %>
-    <%= user.text_field :state %>
+    <%= user.text_field :state, class: 'black_text' %>
   </div>
 
   <div>
-    <%= user.submit "Update!" %>
+    <%= user.submit "Update!", class: 'black_text' %>
   </div>
 
 <% end %>
