@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 
+  # Allows accessing and editing the remember_token in the remember
+  # method
+  attr_accessor :remember_token
   # Sets up one to many relationship with transcripts model and that if
   # a user is destroyed, so are her transcripts.
   has_many :transcripts, dependent: :destroy
@@ -28,8 +31,9 @@ class User < ActiveRecord::Base
   # authentication method.
   # Validation rule that password must be present and that it's at least
   # 6 characters long.
+  # Allow_nil true lets the pw be empty only for edits
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
 
   # User.digest is a method used in the test fixture to create a valid
@@ -41,6 +45,31 @@ class User < ActiveRecord::Base
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
+  end
+
+  # This method returns a random string of 22 characters for cookies.
+  def User.new_token
+    SecureRandom.urlsafe_base64
+  end
+
+  # Remembers a user in the database for use in persistent sessions.
+  # User's remember token is set to the new_token method and the user is
+  # updated
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(remember_token))
+  end
+
+  # Returns true if the given token matches the stored digest. Don't
+  # one hundred percent understand how this works
+  def authenticated?(remember_token)
+    return false if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  # Forgets a user
+  def forget
+    update_attribute(:remember_digest, nil)
   end
 
 end

@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
 
+  # Before_action is a 'before filter' that requires users to be logged
+  # in (through the logged_in_user method) and for the user to be the
+  # correct user before allowing edits
+  before_action :logged_in_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update]
+
   # The index method grabs all the users to post links to their pages
   def index
     @users = User.all
@@ -43,6 +49,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
+      flash[:success] = "Profile updated"
       redirect_to user_path(@user)
     else
       render :edit
@@ -64,4 +71,23 @@ private
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :name, :prof_pic_url, :party_id, :city, :state)
   end
+
+  # If the user is logged in, return true. Otherwise, run the store_loc
+  # method in the sessions helper, flash an error and send the user to
+  # the login page
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
+  end
+
+  # Confirms the correct user. Redirects to home page if current user is
+  # not the user of the current prof page.
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
+
 end

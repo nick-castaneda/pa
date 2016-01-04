@@ -56,19 +56,23 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     delete logout_path
     assert_not is_logged_in?
     assert_redirected_to root_url
+    delete logout_path # simulate a user clicking logout in 2nd window
     follow_redirect!
     assert_select "a[href=?]", login_path
     assert_select "a[href=?]", logout_path, count: 0
     assert_select "a[href=?]", user_path(@user), count: 1 # Maybe I'll take this out
   end
 
-#   # I need to come back and study this test.
-#   test "valid signup information" do
-#     get new_user_path
-#     assert_difference 'User.count', 1 do
-#       post_via_redirect users_path, user: { name:  "Example User", email: "user@example.com", password: "password", password_confirmation: "password" }
-#     end
-#     assert_template 'users/show'
-#     assert is_logged_in?
-#   end
+  # Test grabs the new_user page
+  # After creating a new user, if the user count goes up one, asser true
+  # If the profile page renders, assert true
+  # If a user is logged in, assert true.
+  test "valid signup information" do
+    get new_user_path
+    assert_difference 'User.count', 1 do
+      post_via_redirect users_path, user: { name:  "Example User", email: "user@example.com", password: "password", password_confirmation: "password" }
+    end
+    assert_template 'users/show'
+    assert is_logged_in?
+  end
 end
