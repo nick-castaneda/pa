@@ -19,8 +19,9 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_template "users/edit"
   end
 
-##################
   # This test grabs the edit user page and logs in the test user
+  # You try to edit without logging in, you're redirected to login, then
+  # after logging in the app returns you to edit.
   # If the edit template renders, assert true
   # Test runs an edit on the test user with a valid name, email, and pw
   # If the flash appears, assert_not false

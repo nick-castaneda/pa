@@ -61,7 +61,8 @@ module SessionsHelper
   end
 
 
-################
+  ## These two functions are so you can go back to edit page after
+  ## visiting it before you login
   # Redirects to stored location (or to the default). Then the stored
   # url is deleted.
   def redirect_back_or(default)
