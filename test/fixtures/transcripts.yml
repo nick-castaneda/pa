@@ -1,0 +1,20 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# These fixtures have been created to test that transcripts are posted
+# in reverse time order. Only in fixtures can you set up the created_at
+# attribute
+orangutan:
+  content: "The orangutan is my favorite great ape!"
+  created_at: <%= 10.minutes.ago %>
+
+gorilla:
+  content: "The gorilla is my second favorite great ape"
+  created_at: <%= 3.years.ago %>
+
+chimp:
+  content: "The chimpanzee is my least favorite great ape"
+  created_at: <%= 2.hours.ago %>
+
+most_recent:
+  content: "The bonobo is my third favorite great ape"
+  created_at: <%= Time.zone.now %>

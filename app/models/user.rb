@@ -1,8 +1,12 @@
 class User < ActiveRecord::Base
 
+  # Sets up one to many relationship with transcripts model and that if
+  # a user is destroyed, so are her transcripts.
+  has_many :transcripts, dependent: :destroy
+  # Validation rule that name must be present and not longer than 50
+  validates :name, presence: true, length: { maximum: 50 }
   # Before you save a user, make the email downcase.
-  # Validation rule that name must be present.
-  # REGEX here's the breakdown of how this one works:
+  # REGEX. Here's the breakdown of how this one works:
   #         '/' starts the regex
   #         '\A' matches the start of a string
   #         '[\w+\-.]+' looks for at least one word character, plus,
@@ -16,20 +20,17 @@ class User < ActiveRecord::Base
   #         '\.' case-insensitive
   # Validation rule that email must be present, the length must be less
   # than 255 characters, and fit the regex format defined above.
+  before_save { self.email = email.downcase }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   # Has_secure_password lets you to store passwords as password_digest,
   # creates "password" and "password confirm" vars and creates an
   # authentication method.
   # Validation rule that password must be present and that it's at least
   # 6 characters long.
-
-  before_save { self.email = email.downcase }
-  validates :name, presence: true, length: { maximum: 50 }
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 },
-                                    format: { with: VALID_EMAIL_REGEX },
-                                    uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+
 
   # User.digest is a method used in the test fixture to create a valid
   # password digest. The "BCrypt::Password.create" takes in two args, a

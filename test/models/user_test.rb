@@ -87,4 +87,15 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  # This test creates a user and creates one transcript for that user.
+  # After destroying the user, if the number of transcripts drops by
+  # one, assert true
+  test "associated transcripts should be destroyed" do
+    @user.save
+    @user.transcripts.create!(content: "Lorem ipsum") # DOESNT PASS
+    assert_difference "Transcript.count", -1 do
+      @user.destroy
+    end
+  end
+
 end
