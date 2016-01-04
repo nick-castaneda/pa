@@ -1,0 +1,11 @@
+<!-- Sets up a list item to be viewed in various lists. Presents the
+user name, the event date, the transcript text, and using the
+time_ago_in_words method, the relative time of the post. The variable
+title allows us to grab and edit individual posts. -->
+<li id="transcript-<%=transcript.id %>">
+  <!-- Optional user picture on transcript post -->
+  <h4 class="user"><%= link_to transcript.user.name, transcript.user %></h4>
+  <h5 class="event_date"><%= link_to transcript.date %></h5>
+  <p class="content"><%= transcript.content %></p>
+  <h6 class="timestamp">Posted <%= time_ago_in_words(transcript.created_at) %> ago.</h6>
+</li>

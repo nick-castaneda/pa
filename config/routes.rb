@@ -20,4 +20,9 @@ Rails.application.routes.draw do
 
   delete 'logout' => 'sessions#destroy'
 
+  # Routes for transcripts
+  post 'microposts' => 'microposts#create'
+
+  delete 'microposts/:id' => 'microposts#destroy'
+
 end

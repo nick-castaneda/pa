@@ -1,11 +1,14 @@
 source 'https://rubygems.org'
 
 ######## New Gems #######
-gem "minitest-reporters"
-gem "faker"
+gem "minitest-reporters" # Colors for tests
+gem "faker" # Creates random fake users
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'bootstrap_form'
 gem 'puma', '2.11.1'  # I DONT KNOW WHAT THIS DOES
+gem 'will_paginate', '3.0.7' # Allows paginating.
+gem 'bootstrap-will_paginate', '0.0.10' # formats paginating to bootstrap
+
 
 
 

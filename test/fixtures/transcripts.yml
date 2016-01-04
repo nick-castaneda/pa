@@ -1,20 +1,51 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# These fixtures have been created to test that transcripts are posted
-# in reverse time order. Only in fixtures can you set up the created_at
-# attribute
+# These fixtures have been created for tests involving transcripts. Only
+# in fixtures can you set up the created_at. The user is set to the test
+# user "nick"
+########## Might need to change this file when I set up validations
 orangutan:
+  title: "orangutan"
   content: "The orangutan is my favorite great ape!"
+  date: "01/01/2016"
   created_at: <%= 10.minutes.ago %>
+  user: nick
 
 gorilla:
+  title: "gorilla"
   content: "The gorilla is my second favorite great ape"
+  date: "01/01/2016"
   created_at: <%= 3.years.ago %>
+  user: nick
 
 chimp:
+  title: "chimp"
   content: "The chimpanzee is my least favorite great ape"
+  date: "01/01/2016"
   created_at: <%= 2.hours.ago %>
+  user: nick
 
 most_recent:
+  title: "most recent"
   content: "The bonobo is my third favorite great ape"
+  date: "01/01/2016"
   created_at: <%= Time.zone.now %>
+  user: nick
+
+# This creates 30 transcripts for the test user nick. Each is set to be
+# created 42 days ago so as to not interfere with other tests. Each is
+# given a title numbering from 1 to 30
+<% 30.times do |n| %>
+transcript_<%= n %>:
+  title: <%= Faker::Hipster.sentence %>
+  content: <%= Faker::Lorem.sentence(5) %>
+  date: "01/01/2016"
+  created_at: <%= 42.days.ago %>
+  user: nick
+<% end %>
+
+
+
+
+
+

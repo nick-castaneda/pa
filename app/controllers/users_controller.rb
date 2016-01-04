@@ -6,8 +6,11 @@ class UsersController < ApplicationController
   end
 
   # The show method grabs the user with the id matching the page url?
+  # @transcripts is set equal to all the transcripts of the @user. The
+  # paginate method is run on @transcripts ?(not sure how this works)
   def show
     @user = User.find(params[:id])
+    @transcripts = @user.transcripts.paginate(page: params[:page])
   end
 
   # The new and create methods make a user based on the attributes

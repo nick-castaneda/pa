@@ -4,37 +4,51 @@
 
 <h1>Edit Profile</h1>
 
-<%= form_for @user do |user| %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @user do |user| %>
+      <%= render 'shared/error_messages' %>
+      <div>
+        <%= user.label :name %>
+        <%= user.text_field :name, class: 'black_text' %>
+      </div>
 
-  <div>
-    <%= user.label :name %>
-    <%= user.text_field :name, class: 'black_text' %>
+      <div>
+        <%= user.label :prof_pic_url %>
+        <%= user.text_field :prof_pic_url, class: 'black_text' %>
+      </div>
+
+      <div>
+        <%= user.label :party_id %>
+        <%= user.text_field :party_id, class: 'black_text' %>
+      </div>
+
+      <div>
+        <%= user.label :city %>
+        <%= user.text_field :city, class: 'black_text' %>
+      </div>
+
+      <div>
+        <%= user.label :state %>
+        <%= user.text_field :state, class: 'black_text' %>
+      </div>
+
+      <div>
+        <%= user.label :password %>
+        <%= user.password_field :password, class: 'black_text' %>
+      </div>
+
+      <div>
+        <%= user.label :password_confirmation, "Confirmation" %>
+        <%= user.password_field :password_confirmation, class: 'black_text' %>
+      </div>
+
+      <div>
+        <%= user.submit "Update!", class: 'btn btn-primary' %>
+      </div>
+
+    <% end %>
+
+    <%= link_to 'Back to User Page', user_path %>
   </div>
-
-  <div>
-    <%= user.label :prof_pic_url %>
-    <%= user.text_field :prof_pic_url, class: 'black_text' %>
-  </div>
-
-  <div>
-    <%= user.label :party_id %>
-    <%= user.text_field :party_id, class: 'black_text' %>
-  </div>
-
-  <div>
-    <%= user.label :city %>
-    <%= user.text_field :city, class: 'black_text' %>
-  </div>
-
-  <div>
-    <%= user.label :state %>
-    <%= user.text_field :state, class: 'black_text' %>
-  </div>
-
-  <div>
-    <%= user.submit "Update!", class: 'black_text' %>
-  </div>
-
-<% end %>
-
-<%= link_to 'Back to User Page', user_path %>
+</div>

@@ -4,14 +4,13 @@ class UserTest < ActiveSupport::TestCase
 
   # Setup method sets up a random user template? for tests.
   def setup
-    @user = User.new(name: "Example User", email: "user@example", password: "foobar", password_confirmation: "foobar")
+    @user = User.new(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar")
   end
 
-  # # Not sure about this, fails test
-  # # If the user is valid based on the user model, assert true.
-  # test "should be valid" do
-  #   assert @user.valid?
-  # end
+  # If the user is valid based on the user model, assert true.
+  test "should be valid" do
+    assert @user.valid?
+  end
 
   # This test sets the user name to multiple spaces
   # If the user name is not present or just spaces, assert_not false
@@ -55,8 +54,7 @@ class UserTest < ActiveSupport::TestCase
   # This test sets invalid_addresses to an array of invalid emails.
   # For each email that is invalid, assert_not false
   test "email validation should reject invalid addresses" do
-    invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
-                           foo@bar_baz.com foo@bar+baz.com]
+    invalid_addresses = %w[user@example,com user_at_foo.org user.name@example. foo@bar_baz.com foo@bar+baz.com]
     invalid_addresses.each do |invalid_address|
       @user.email = invalid_address
       assert_not @user.valid?, "#{invalid_address.inspect} should be invalid"
