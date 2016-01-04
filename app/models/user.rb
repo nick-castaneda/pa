@@ -31,25 +31,14 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
 
-
-
-
-
-
-  # before_save { self.email = email.downcase }
-  # validates :name, presence: true, length: { maximum: 50 }
-  # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  # validates :email, presence: true, length: { maximum: 255 },
-  #                   format: { with: VALID_EMAIL_REGEX },
-  #                   uniqueness: { case_sensitive: false }
-  # has_secure_password
-  # validates :password, presence: true, length: { minimum: 1 }
-
-  # I do not understand exactly what this code is, but I know it
-  # encrpyts passwords
+  # User.digest is a method used in the test fixture to create a valid
+  # password digest. The "BCrypt::Password.create" takes in two args, a
+  # string, and a cost. The higher the cost, the safer the website, but
+  # for tests we set a lower cost for speed.
+  # Below, a cost var is set equal to the min cost if true, the normal
+  # cost if not. The method then creates a password using the cost var.
   def User.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                  BCrypt::Engine.cost
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
 

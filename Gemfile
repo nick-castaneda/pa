@@ -5,6 +5,7 @@ gem "minitest-reporters"
 gem "faker"
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'bootstrap_form'
+gem 'puma', '2.11.1'  # I DONT KNOW WHAT THIS DOES
 
 
 

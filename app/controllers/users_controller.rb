@@ -13,8 +13,9 @@ class UsersController < ApplicationController
   # The new and create methods make a user based on the attributes
   # defined in the private user_params method. If the user is
   # sucessfully created, the user is loged in through the log_in
-  # function from _________, success flashes, and the user's prof page
-  # is loaded.  If the registration fails, the new user page reloads.
+  # function from the sessions helper, success flashes, and the user's
+  # prof page is loaded.  If the registration fails, the new user page
+  # reloads.
   def new
     @user = User.new
   end
