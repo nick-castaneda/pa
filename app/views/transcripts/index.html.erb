@@ -1,0 +1,11 @@
+<% provide(:title, "All transcripts") %>
+
+<h1>All Transcripts</h1>
+
+<%= will_paginate %>
+
+<ul class="transcripts">
+  <%= render @transcripts %>
+</ul>
+
+<%= will_paginate %>

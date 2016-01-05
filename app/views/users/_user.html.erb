@@ -1,5 +1,8 @@
 <li>
-  <%= link_to user.name, user %> - <%= user.party_id %>
+  <%= link_to user.name, user %> -
+  <% if user.party %>
+    <%= user.party.name %> <!-- needed to pass tests -->
+  <% end %>
   <% if current_user.admin? && !current_user?(user) %>
   <!-- Below, only admins have delete keys -->
     | <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>

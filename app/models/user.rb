@@ -5,7 +5,10 @@ class User < ActiveRecord::Base
   attr_accessor :remember_token
   # Sets up one to many relationship with transcripts model and that if
   # a user is destroyed, so are her transcripts.
+  # Sets user to parties
   has_many :transcripts, dependent: :destroy
+  belongs_to :party
+
   # Validation rule that name must be present and not longer than 50
   validates :name, presence: true, length: { maximum: 50 }
   # Before you save a user, make the email downcase.

@@ -1,0 +1,7 @@
+<% provide(:title, @transcript.content) %>
+<%= render 'layouts/header' %>
+
+<h1><%= @transcript.title %></h1>
+<h3><%= @transcript.date %></h3>
+<h5>Posted by: <%= link_to @transcript.user.name, @transcript.user %></h5>
+<p><%= @transcript.content %></p>

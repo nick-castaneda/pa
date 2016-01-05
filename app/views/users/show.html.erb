@@ -1,6 +1,4 @@
 <% provide(:title, @user.name) %>
-<%= render 'layouts/header' %>
-
 
 <div class="container miss_header">
   <div class="row">
@@ -27,11 +25,14 @@
       <ul>
       <!-- If a user is logged in, show edit, delete, and logout links.
       If not, show login link -->
-      <% if logged_in? %>
+      <% if logged_in? && current_user?(@user)%>
+        <li><%= link_to "Post Transcript", new_transcript_path %></li>
         <li><%= link_to "Edit Profile", edit_user_path %></li>
-        <li><%= link_to "Delete Profile", user_path, method: :delete %></li>
         <li><%= link_to "Log out", logout_path, method: :delete %></li>
-      <% else %>
+        <% if current_user.admin? %>
+          <li><%= link_to "Delete Profile", user_path, method: :delete %></li>
+        <% end %>
+      <% elsif !logged_in? %>
         <li><%= link_to "Login", login_path %></li>
       <% end %>
       </ul>

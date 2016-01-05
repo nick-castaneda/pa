@@ -6,6 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Party.create(name: "Independent")
+Party.create(name: "Democrat")
+Party.create(name: "Republican")
+Party.create(name: "Socialist")
+Party.create(name: "Libertarian")
+Party.create(name: "Royalist")
+Party.create(name: "Green")
+
+
 User.create(
   name: "Nick Castaneda",
   email: "npcastaneda@gmail.com",
@@ -18,22 +27,30 @@ User.create(
   admin: true
 )
 
-50.times do |n|
+49.times do |n|
   User.create(
     name: Faker::Name.name,
     email: Faker::Internet.email,
     password: "password",
     password_confirmation: "password",
     prof_pic_url: Faker::Avatar.image,
-    party_id: Faker::Number.between(1, 10),
+    party_id: Faker::Number.between(1, 7),
     city: Faker::Address.city,
     state: Faker::Address.state_abbr
   )
 end
 
 users = User.all
-
 10.times do
-  content = Faker::Lorem.paragraph
-  users.each { |user| user.transcripts.create!(content: content) }
+    users.each { |user| user.transcripts.create!(
+      title: Faker::Company.buzzword,
+      content: Faker::Lorem.paragraph,
+      date: Faker::Date.between(100.days.ago, Date.today)
+    ) }
 end
+users[0].transcripts.create!(
+  title: "Trump Immigration Commercial",
+  content: "I’m Donald Trump and I approve this message. The politicians can pretend it’s something else but Donald Trump calls it radical Islamic Terrorism. That’s why he’s calling for a temporary shutdown of Muslims entering the United States until we can figure out what’s going on. He’ll quickly cut the head off ISIS and he’ll take their oil. And he’ll stop the illegal immigration by building a wall on our southern border that Mexico will pay for. We will make America great again.",
+  date: "20160104"
+)
+

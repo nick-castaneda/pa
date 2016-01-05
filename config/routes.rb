@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
 
+  # API
+  namespace :api do
+    resources :transcripts, only: [:index, :show]
+  end
+
   # Routes for users
   root 'users#home'
   get 'users/index' => 'users#index', as: :users
 
   get 'users/new' => 'users#new', as: :new_user
-  post 'users/:id' => 'users#create'
+  post 'users/index' => 'users#create'
 
   get 'users/:id' => 'users#show', as: :user
 
@@ -21,8 +26,13 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
 
   # Routes for transcripts
-  post 'transcripts' => 'transcripts#create'
+  get 'transcripts/new' => 'transcripts#new', as: :new_transcript
+  post 'transcripts/' => 'transcripts#create' # fix with transcripts/:id
 
   delete 'transcripts/:id' => 'transcripts#destroy'
+
+  get 'transcripts/index' => 'transcripts#index', as: :transcript_index
+
+  get 'transcripts/:id' => 'transcripts#show', as: :transcript
 
 end

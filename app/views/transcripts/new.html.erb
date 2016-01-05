@@ -1,0 +1,38 @@
+<% provide(:title, "New Transcript") %>
+
+<% render '/layouts/header.html.erb' %>
+
+<div class='col-md-3'></div>
+<div class='col-md-5'>
+<h1>New Transcript</h1>
+
+<!-- Each tag in this erb form has a name set to "user[attribute]" -->
+<%= form_for(@transcript) do |transcript| %>
+  <%= render 'shared/error_messages' %>
+
+  <!-- FIGURE OUT EXACTLY HOW FLASH WORKS -->
+
+  <div>
+    <%= transcript.label :title %>
+    <%= transcript.text_field :title, class: 'black_text' %>
+  </div>
+
+  <div>
+    <%= transcript.label :date %>
+    <%= transcript.text_field :date, class: 'black_text' %>
+  </div>
+
+  <div>
+    <%= transcript.label :content %>
+    <%= transcript.text_field :content, class: 'black_text big_box' %>
+  </div>
+
+
+
+  <div>
+    <%= transcript.submit "Submit!", class: "btn btn-primary" %>
+  </div>
+
+<% end %>
+</div>
+<div class='col-md-3'></div>

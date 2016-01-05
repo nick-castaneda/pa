@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       log_in @user
       redirect_to user_path(@user)
     else
-      render :new
+      render :new_transcript
     end
   end
 
@@ -79,17 +79,6 @@ private
   # mess with all the params (like "id").
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :name, :prof_pic_url, :party_id, :city, :state)
-  end
-
-  # If the user is logged in, return true. Otherwise, run the store_loc
-  # method in the sessions helper, flash an error and send the user to
-  # the login page
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
   end
 
   # Confirms the correct user. Redirects to home page if current user is
