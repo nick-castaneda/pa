@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # Routes for users
-  root 'users#index'
+  root 'users#home'
   get 'users/index' => 'users#index', as: :users
 
   get 'users/new' => 'users#new', as: :new_user
@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
 
   # Routes for transcripts
-  post 'microposts' => 'microposts#create'
+  post 'transcripts' => 'transcripts#create'
 
-  delete 'microposts/:id' => 'microposts#destroy'
+  delete 'transcripts/:id' => 'transcripts#destroy'
 
 end

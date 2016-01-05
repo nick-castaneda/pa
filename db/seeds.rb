@@ -6,16 +6,34 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-drake = User.find(11)
-nick = User.find(12)
-10.times do
-  content = Faker::Lorem.paragraph
-  title = Faker::Hipster.sentence
-  nick.transcripts.create!(title: title, content: content, date: "01/05/2016")
+User.create(
+  name: "Nick Castaneda",
+  email: "npcastaneda@gmail.com",
+  password: "password",
+  password_confirmation: "password",
+  prof_pic_url: "https://upload.wikimedia.org/wikipedia/commons/9/97/SUMATRAN_ORANGUTAN.jpg",
+  party_id: 1,
+  city: "Sylmar",
+  state: "CA",
+  admin: true
+)
+
+50.times do |n|
+  User.create(
+    name: Faker::Name.name,
+    email: Faker::Internet.email,
+    password: "password",
+    password_confirmation: "password",
+    prof_pic_url: Faker::Avatar.image,
+    party_id: Faker::Number.between(1, 10),
+    city: Faker::Address.city,
+    state: Faker::Address.state_abbr
+  )
 end
+
+users = User.all
 
 10.times do
   content = Faker::Lorem.paragraph
-  title = Faker::Hipster.sentence
-  drake.transcripts.create!(title: title, content: content, date: "01/06/2016")
+  users.each { |user| user.transcripts.create!(content: content) }
 end

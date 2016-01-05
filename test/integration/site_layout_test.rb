@@ -8,7 +8,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
   # correct route, substituting the ? for the associated address.
   test "home links" do
     get root_path
-    assert_template "users/index"
+    assert_template "users/home"
     assert_select "a[href=?]", login_path
     assert_select "a[href=?]", new_user_path
   end

@@ -7,12 +7,20 @@ class UsersControllerTest < ActionController::TestCase
     @other_user = users(:brody)
   end
 
+  # Tests if you are redirected to the login page if you're not signed
+  # in. If redirected home, assert true
+  test "should redirect login when not logged in" do
+    get :index
+    assert_redirected_to login_url
+  end
+
   # Tests for home page. Checks if new method runs successfuly and if
   # the title is correct.
   test "should get index" do
+    log_in_as @user
     get :index
     assert_response :success
-    assert_select "title", "Home | PoliTate"
+    assert_select "title", "All users | PoliTate"
   end
 
   # Tests for registration page. Checks if new method runs successfuly
@@ -58,6 +66,27 @@ class UsersControllerTest < ActionController::TestCase
     log_in_as(@other_user)
     patch :update, id: @user, user: { name: @user.name, email: @user.email }
     assert flash.empty?
+    assert_redirected_to root_url
+  end
+
+  # Try to destroy as user when not logged in
+  # If the user count stays the same, assert true
+  # If the app redirects to login page, assert true
+  test "should redirect destroy when not logged in" do
+    assert_no_difference 'User.count' do
+      delete :destroy, id: @user
+    end
+    assert_redirected_to login_url
+  end
+
+  # Log in non-admin user and try to destroy a user
+  # If the user count stays the same, assert true
+  # If the app redirects to home page, assert true
+  test "should redirect destroy when logged in as a non-admin" do
+    log_in_as(@other_user)
+    assert_no_difference 'User.count' do
+      delete :destroy, id: @user
+    end
     assert_redirected_to root_url
   end
 
