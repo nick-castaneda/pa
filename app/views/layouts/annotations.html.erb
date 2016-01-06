@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--  -->
+  <title><%= full_title(yield(:title)) %></title>
+  <!-- Rails links to the the stylesheet, javascript, and csrf? -->
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <!-- External link to Monserrat font -->
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+  <!-- Sets up tab icon -->
+  <%= favicon_link_tag('http://findicons.com/files/icons/282/flags/48/united_states_of_america_usa.png') %>
+  <link rel="shortcut icon" href="app/assets/images/tab_icon.ico">
+  <!-- Sets up jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+
+  <%= yield %>
+
+</div>
+
+</body>
+</html>

@@ -47,7 +47,7 @@ users[0].transcripts.create!(
   date: "20160104"
 )
 
-Annotation.create(comment: "Hello world", link: "www.google.com", user_id: 1, transcript_id: 501)
+Annotation.create(comment: "Hello world", link: "www.google.com", start: 0, :end => 5, user_id: 1, transcript_id: 501)
 
 
 

@@ -165,8 +165,14 @@ input {
 }
 
 /* Words */
-#word_3{
-  color: red;
+span:hover{
+  cursor: pointer;
+}
+.pointer{
+
+  &:hover{
+    cursor:pointer
+  }
 }
 .red_text{
   color: red;

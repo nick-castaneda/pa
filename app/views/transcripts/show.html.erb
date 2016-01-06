@@ -1,4 +1,4 @@
-<% provide(:title, @transcript.content) %>
+<% provide(:title, @transcript.title) %>
 <%= render 'layouts/header' %>
 
 
@@ -12,10 +12,17 @@
         <span id=<%= "word_#{i}" %>><%= @word_array[i] %></span>
       <% end %>
     </p>
+    <h3><%= link_to "Annotate!", new_annotation_path %></h3>
+    <% @transcript.annotations.each do |x| %>
+      <p class="pointer" id=<%= "anno_#{i}" %>><%= x.link %></p>
+      <%= link_to "annotation page", annotation_path(x) %></p>
+    <% end %>
+
+
   </div>
 
   <div class="col-md-4">
-  <iframe width='100%' height='425px' display='block' src=<%= @url %> allowfullscreen></iframe>
+    <iframe width='100%' height='500px' display='block' src=<%= @url %> allowfullscreen></iframe>
 
   </div>
 

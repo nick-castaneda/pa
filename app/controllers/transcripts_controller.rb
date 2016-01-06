@@ -13,11 +13,14 @@ class TranscriptsController < ApplicationController
   def show
     @transcript = Transcript.find(params[:id])
     @word_array = @transcript.content.split(' ')
-    @url = "/annotations/2".html_safe
+    @url = "/annotations/2"
+    log_transcript (@transcript)
+    @annotations = @transcript.annotations if !@transcript.annotations.empty?
   end
 
   def new
-    @transcript = Transcript.new(user_id: 1)
+    @user = current_user
+    @transcript = Transcript.new(user_id: current_user.id)
   end
   def create
     @transcript = Transcript.new(transcript_params)
@@ -32,6 +35,8 @@ class TranscriptsController < ApplicationController
 
   def destroy
   end
+
+
 
 private
 

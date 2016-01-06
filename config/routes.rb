@@ -41,7 +41,7 @@ Rails.application.routes.draw do
 
   delete 'annotations/:id' => 'annotations#destroy'
 
-  get 'annotations/:id' => 'annotations#show'
+  get 'annotations/:id' => 'annotations#show', as: :annotation
 
 
 
