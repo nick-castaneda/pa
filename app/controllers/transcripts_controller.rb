@@ -12,6 +12,8 @@ class TranscriptsController < ApplicationController
 
   def show
     @transcript = Transcript.find(params[:id])
+    @word_array = @transcript.content.split(' ')
+    @url = "/annotations/2".html_safe
   end
 
   def new

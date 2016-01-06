@@ -1,7 +1,22 @@
 <% provide(:title, @transcript.content) %>
 <%= render 'layouts/header' %>
 
-<h1><%= @transcript.title %></h1>
-<h3><%= @transcript.date %></h3>
-<h5>Posted by: <%= link_to @transcript.user.name, @transcript.user %></h5>
-<p><%= @transcript.content %></p>
+
+<div class="row">
+  <div class="col-md-7 col-md-offset-1">
+    <h1><%= @transcript.title %></h1>
+    <h3><%= @transcript.date %></h3>
+    <h5>Posted by: <%= link_to @transcript.user.name, @transcript.user %></h5>
+    <p>
+      <% for i in 0..@word_array.length %>
+        <span id=<%= "word_#{i}" %>><%= @word_array[i] %></span>
+      <% end %>
+    </p>
+  </div>
+
+  <div class="col-md-4">
+  <iframe width='100%' height='425px' display='block' src=<%= @url %> allowfullscreen></iframe>
+
+  </div>
+
+</div>

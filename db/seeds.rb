@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Party.create(name: "Independent")
 Party.create(name: "Democrat")
@@ -53,4 +46,13 @@ users[0].transcripts.create!(
   content: "I’m Donald Trump and I approve this message. The politicians can pretend it’s something else but Donald Trump calls it radical Islamic Terrorism. That’s why he’s calling for a temporary shutdown of Muslims entering the United States until we can figure out what’s going on. He’ll quickly cut the head off ISIS and he’ll take their oil. And he’ll stop the illegal immigration by building a wall on our southern border that Mexico will pay for. We will make America great again.",
   date: "20160104"
 )
+
+Annotation.create(comment: "Hello world", link: "www.google.com", user_id: 1, transcript_id: 501)
+
+
+
+
+
+
+
 

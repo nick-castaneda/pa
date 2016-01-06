@@ -15,3 +15,10 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+
+alert("hi")
+
+$(document).ready(function(){
+  alert("sup");
+})

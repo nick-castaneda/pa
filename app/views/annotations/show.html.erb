@@ -1,0 +1,12 @@
+<% provide(:title, @annotation.transcript.title) %>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+
+  <p><%= @annotation.comment %></p>
+  <p><%= @annotation.link %></p>
+  <p><%= link_to @annotation.user.name, @annotation.user %></p>
+  <p><%= @annotation.start %> to <%= @annotation.end %></p>
+
+  </div>
+</div>

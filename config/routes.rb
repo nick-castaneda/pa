@@ -35,4 +35,17 @@ Rails.application.routes.draw do
 
   get 'transcripts/:id' => 'transcripts#show', as: :transcript
 
+  # Routes for annotations
+  get 'annotations/new' => 'annotations#new', as: :new_annotation
+  post 'annotations/' => 'annotations#create'
+
+  delete 'annotations/:id' => 'annotations#destroy'
+
+  get 'annotations/:id' => 'annotations#show'
+
+
+
+
+
+
 end
