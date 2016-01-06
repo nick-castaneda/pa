@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# ruby '2.0.0'
+
 ######## New Gems #######
 gem "minitest-reporters" # Colors for tests
 gem "faker" # Creates random fake users
@@ -9,7 +11,7 @@ gem 'puma', '2.11.1'  # I DONT KNOW WHAT THIS DOES
 gem 'will_paginate', '3.0.7' # Allows paginating.
 gem 'bootstrap-will_paginate', '0.0.10' # formats paginating to bootstrap
 
-
+# gem 'rails_12factor'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
