@@ -13,7 +13,7 @@ class AnnotationsController < ApplicationController
     @annotation = Annotation.new(annotation_params)
     if @annotation.save
       flash[:success] = "Great job! Transcript annotated"
-      redirect_to annotation_path(@annotation)
+      redirect_to "/transcripts/#{$tran_id}"
     else
       render :new
     end

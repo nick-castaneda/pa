@@ -16,21 +16,4 @@
 //= require turbolinks
 //= require_tree .
 
-var ready;
-ready = function() {
 
-  $("span").on("click", function(event) {
-    $(this).toggleClass( "red_text" );
-    console.log("blue")
-  });
-
-  var txt1 = "<iframe width='100%' height='500px' display='block' overflow='scroll' src='/annotations/3' allowfullscreen></iframe>"
-  $(".pointer").click(function () {
-    $("iframe").remove()
-    $(".col-md-4").append(txt1);
-  });
-};
-
-
-$(document).ready(ready);
-$(document).on('hi, world', ready)

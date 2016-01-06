@@ -13,9 +13,9 @@ class TranscriptsController < ApplicationController
   def show
     @transcript = Transcript.find(params[:id])
     @word_array = @transcript.content.split(' ')
-    @url = "/annotations/2"
     log_transcript (@transcript)
     @annotations = @transcript.annotations if !@transcript.annotations.empty?
+    $clicked_array = []
   end
 
   def new

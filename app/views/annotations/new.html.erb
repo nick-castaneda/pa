@@ -1,39 +1,49 @@
 <% provide(:title, "Annotate #{$tran_title}") %>
+<%= render 'layouts/header' %>
+<div class="container">
+  <!-- For error messages -->
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
 
-<div class='col-md-3'></div>
-<div class='col-md-5'>
-<h1>New Annotation</h1>
 
-<!-- Each tag in this erb form has a name set to "user[attribute]" -->
-<%= form_for(@annotation) do |annotation| %>
-  <%= render 'shared/error_messages' %>
 
-  <!-- FIGURE OUT EXACTLY HOW FLASH WORKS -->
+  <div class='col-md-3'></div>
+  <div class='col-md-5'>
+  <h1>New Annotation</h1>
 
-  <div>
-    <%= annotation.label :comment %>
-    <%= annotation.text_field :comment, class: 'black_text' %>
+  <!-- Each tag in this erb form has a name set to "user[attribute]" -->
+  <%= form_for(@annotation) do |annotation| %>
+    <%= render 'shared/error_messages' %>
+
+    <!-- FIGURE OUT EXACTLY HOW FLASH WORKS -->
+
+    <div>
+      <%= annotation.label :comment %>
+      <%= annotation.text_field :comment, class: 'black_text' %>
+    </div>
+
+    <div>
+      <%= annotation.label :link %>
+      <%= annotation.text_field :link, class: 'black_text' %>
+    </div>
+
+    <div>
+      <%= annotation.label :start %>
+      <%= annotation.text_field :start, class: 'black_text' %>
+    </div>
+
+    <div>
+      <%= annotation.label :end %>
+      <%= annotation.text_field :end, class: 'black_text' %>
+    </div>
+
+    <div>
+      <%= annotation.submit "Submit!", class: "btn btn-primary" %>
+    </div>
+
+  <% end %>
   </div>
+  <div class='col-md-3'></div>
 
-  <div>
-    <%= annotation.label :link %>
-    <%= annotation.text_field :link, class: 'black_text' %>
-  </div>
-
-  <div>
-    <%= annotation.label :start %>
-    <%= annotation.text_field :start, class: 'black_text' %>
-  </div>
-
-  <div>
-    <%= annotation.label :end %>
-    <%= annotation.text_field :end, class: 'black_text' %>
-  </div>
-
-  <div>
-    <%= annotation.submit "Submit!", class: "btn btn-primary" %>
-  </div>
-
-<% end %>
 </div>
-<div class='col-md-3'></div>

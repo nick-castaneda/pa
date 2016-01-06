@@ -1,4 +1,70 @@
 <% provide(:title, @transcript.title) %>
+
+
+<% content_for :for_head do %>
+  <script>
+
+    var ready;
+    ready = function() {
+
+      // If you click a word in the content, the "red_text" class is
+      // added.
+      $("span").on("click", function(event) {
+        $(this).toggleClass( "red_text" );
+      });
+
+      // For each annotation, if you click the appropriate link, an
+      // iframe renders
+      <% @transcript.annotations.each do |x| %>
+
+        var src<%= x.id %> = "<iframe width='100%' height='500px' display='block' overflow='scroll' src='/annotations/<%= x.id %>' allowfullscreen></iframe>"
+
+        $("#anno_<%= x.id %>").click(function () {
+          $("iframe").remove()
+          $(".col-md-4").append(src<%= x.id %>);
+        });
+
+      <% end %>
+
+      //
+      var start = 3
+      var end = 5
+
+      // Method goes through each word, and pushes it to an array if the
+      // word has a class of "red_text"
+      <% def word_check %>
+        var clicked_array = []
+        <% for x in 0..@word_array.length %>
+          if($("#word_<%= x %>").hasClass( "red_text" )){
+            clicked_array.push(<%= x %>);
+          }
+        <% end %>
+        console.log(clicked_array);
+        return clicked_array;
+      <% end %>
+
+
+
+      //
+      $("h1").on("click", function(event) {
+        <% word_check %>
+      });
+
+
+
+      $("#new_anno").on("click", function(event) {
+        window.location.href = '/annotations/new/' + start + '/' + end
+      });
+
+    };
+
+
+    $(document).ready(ready);
+    $(document).on('hi, world', ready)
+
+  </script>
+<% end %>
+
 <%= render 'layouts/header' %>
 
 
@@ -12,9 +78,9 @@
         <span id=<%= "word_#{i}" %>><%= @word_array[i] %></span>
       <% end %>
     </p>
-    <h3><%= link_to "Annotate!", new_annotation_path %></h3>
+    <h3 id='new_anno'><%= link_to "Annotate!", new_annotation_path %></h3>
     <% @transcript.annotations.each do |x| %>
-      <p class="pointer" id=<%= "anno_#{i}" %>><%= x.link %></p>
+      <p class="pointer" id=<%= "anno_#{x.id}" %>><%= x.link %></p>
       <%= link_to "annotation page", annotation_path(x) %></p>
     <% end %>
 
@@ -22,8 +88,8 @@
   </div>
 
   <div class="col-md-4">
-    <iframe width='100%' height='500px' display='block' src=<%= @url %> allowfullscreen></iframe>
-
   </div>
 
 </div>
+
+<!-- window.location.href = '/annotations/new/' + start + '/' + end -->
