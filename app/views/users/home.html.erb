@@ -1,12 +1,10 @@
 <% provide(:title, "Home") %>
 
 
-
-
 <div id='title_div'><h1>Welcome to PoliTate</h1></div>
 <div id='subtitle_div'><h3>crowd-sourced annotations of political transcripts</h3></div>
 <div id='start_links'><strong>
-  <%= link_to "Login", login_path %>
+  <span id='login' data-toggle='modal' data-target='#login-modal'>Login</span>
   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
   <%= link_to "Register", new_user_path %>
 </strong></div>
@@ -14,8 +12,3 @@
 
 
 
-<div id='for_admin'>
-  <% @users.each do |u| %>
-    <span><%= link_to u.id, user_path(u) %></span>
-  <% end %>
-</div>

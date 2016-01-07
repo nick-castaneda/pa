@@ -5,10 +5,8 @@
 <h1>Register</h1>
 
 <!-- Each tag in this erb form has a name set to "user[attribute]" -->
-<%= form_for(@user) do |user| %>
+<%= form_for(@user, url: new_user_path) do |user| %>
   <%= render 'shared/error_messages' %>
-
-  <!-- FIGURE OUT EXACTLY HOW FLASH WORKS -->
 
   <div>
     <%= user.label :name %>

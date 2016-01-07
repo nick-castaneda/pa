@@ -1,0 +1,27 @@
+<!-- Login Modal -->
+<div id='login-modal' class='modal fade bs-login-modal-sm'  >
+ <div class='modal-dialog modal-sm'>
+   <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Login to your Account</h4>
+      </div>
+      <div class="modal-body">
+        <!-- Can't do form_for(@session) because no sessions model -->
+        <%= form_for(:session, url: login_path) do |f| %>
+
+          <%= f.label :email %>
+          <%= f.email_field :email, class: 'form-control' %>
+
+          <%= f.label :password %>
+          <%= f.password_field :password, class: 'form-control' %>
+
+          <%= f.submit "Log in", class: "btn btn-primary" %>
+        <% end %>
+
+        <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
+      </div>
+    </div>
+  </div>
+</div>
+

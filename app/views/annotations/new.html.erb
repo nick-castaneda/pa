@@ -29,13 +29,11 @@
     </div>
 
     <div>
-      <%= annotation.label :start %>
-      <%= annotation.text_field :start, class: 'black_text' %>
+      <%= annotation.hidden_field :start, class: 'black_text', value: params[:start] %>
     </div>
 
     <div>
-      <%= annotation.label :end %>
-      <%= annotation.text_field :end, class: 'black_text' %>
+      <%= annotation.hidden_field :end, class: 'black_text', value: params[:end] %>
     </div>
 
     <div>

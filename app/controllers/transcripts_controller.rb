@@ -19,8 +19,12 @@ class TranscriptsController < ApplicationController
   end
 
   def new
-    @user = current_user
-    @transcript = Transcript.new(user_id: current_user.id)
+    if logged_in?
+      @user = current_user
+      @transcript = Transcript.new(user_id: current_user.id)
+    else
+      logged_in_user
+    end
   end
   def create
     @transcript = Transcript.new(transcript_params)

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'users/index' => 'users#index', as: :users
 
   get 'users/new' => 'users#new', as: :new_user
-  post 'users/index' => 'users#create'
+  post 'users/new' => 'users#create'
 
   get 'users/:id' => 'users#show', as: :user
 

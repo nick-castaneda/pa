@@ -24,11 +24,13 @@
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
-} // for debug message box
+}
+
+ // for debug message box
 
 /* Site styles */
 body{
-  background-color: #052E5D;
+  background-color: blue;
   color: white;
   font-family: 'Montserrat', sans-serif;
 }
@@ -38,6 +40,16 @@ body{
 .black_text{
   color: black;
 }
+
+/* Modal styles */
+.modal-content{
+  background-color: grey
+}
+.modal-header{
+  text-align: center;
+}
+
+
 
 /* Index page */
 #title_div{

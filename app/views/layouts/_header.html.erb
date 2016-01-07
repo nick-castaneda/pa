@@ -1,16 +1,36 @@
 <header class="navbar navbar-fixed-top navbar-inverse" id="header">
   <div class="container">
-  <%= link_to "PoliTate", root_path, id: "logo" %>
+  <% if logged_in? %>
+    <%= link_to "PoliTate", current_user, id: "logo" %>
+  <% else %>
+    <%= link_to "PoliTate", root_url, id: "logo" %>
+  <% end %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <!-- Single navbar links -->
-        <li><%= link_to "Users", users_path %></li>
-        <li><%= link_to "Transcripts", transcript_index_path %></li>
-        <li><%= link_to "About", '#' %></li>
+
+
         <!-- -->
         <% if logged_in? %>
+          <!-- Transcripts dropdown -->
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Transcripts<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Transcripts", transcript_index_path %></li>
+              <li><%= link_to "Post a Transcript", new_transcript_path %></li>
+            </ul>
+          </li>
+          <!-- Users dropdown -->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Users<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Users", users_path %></li>
+              <li><%= link_to "Parties", '#' %></li>
+            </ul>
+          </li>
+          <!-- Profile dropdown -->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><%= link_to "Profile", current_user %></li>
               <li><%= link_to "Settings", edit_user_path(current_user) %></li>
@@ -19,6 +39,8 @@
             </ul>
           </li>
         <% else %>
+          <li><%= link_to "Users", users_path %></li>
+          <li><%= link_to "Transcripts", transcript_index_path %></li>
           <li><%= link_to "Log in", login_path %></li>
         <% end %>
       </ul>

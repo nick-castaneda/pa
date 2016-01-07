@@ -76,7 +76,7 @@
       /////////// Eventually combine these two!
       // CLicking the title runs the word_check method
       // Clicking h3 runs the new page for a new annotation
-      $("h1").on("click", function(event) {
+      $("#new_anno").on("click", function(event) {
         <% word_check %>;
         if(error === ""){
           window.location.href = '/annotations/' + start + '/' + end + '/new'
@@ -108,7 +108,7 @@
         <span id=<%= "word_#{i}" %>><%= @word_array[i] %></span>
       <% end %>
     </p>
-    <h3 id='new_anno'><%= link_to "Annotate!", "/users" %></h3>
+    <h3 id='new_anno'>Annotate!</h3>
 
   </div>
 

@@ -8,6 +8,7 @@
       <br>
       <p>Email: <%= @user.email %></p><br>
       <p>Location: <%= @user.city %>, <%= @user.state %></p><br>
+      <p>Party: <%= @user.party.name %></p><br>
       <br><br>
       <!-- If the user has any transcripts, render each in a list. -->
       <% if @user.transcripts.any? %>

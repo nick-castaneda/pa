@@ -22,7 +22,11 @@
 </head>
 <body>
 <%= render 'layouts/header' %>
+<%= render "layouts/modal" %>
+
 <div class="container">
+  <!-- For Modal -->
+  <div id="modal-holder"></div>
   <!-- For error messages -->
   <% flash.each do |message_type, message| %>
     <div class="alert alert-<%= message_type %>"><%= message %></div>
@@ -32,8 +36,9 @@
 
 </div>
 <!-- This is a default method that renders a debug window. It only works
-when in developer mode and doesn't show for users nor for testing -->
-<%= debug(params) if Rails.env.development? %>
+when in developer mode and doesn't show for users nor for testing
+-->
+<%= debug(params) if Rails.env.test? %>
 
 </body>
 </html>

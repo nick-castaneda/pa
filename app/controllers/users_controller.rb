@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
   def home
-    @users = User.all #eventually cut this
   end
 
   # Before_action is a 'before filter' that requires users to be logged
@@ -23,6 +22,7 @@ class UsersController < ApplicationController
   # @transcripts is set equal to all the transcripts of the @user. The
   # paginate method is run on @transcripts ?(not sure how this works)
   def show
+    logged_in_user
     @user = User.find(params[:id])
     @transcripts = @user.transcripts.paginate(page: params[:page])
   end
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       log_in @user
       redirect_to user_path(@user)
     else
-      render :new_transcript
+      render :new
     end
   end
 

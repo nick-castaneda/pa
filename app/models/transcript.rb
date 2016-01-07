@@ -10,6 +10,6 @@ class Transcript < ActiveRecord::Base
   # Transcripts are only valid if they have a user_id and content that
   # is no longer than 100,000 characters
   validates :user_id, presence: true
-  validates :content, presence: true, length: { maximum: 100000 }
+  validates :content, presence: true, length: { maximum: 150000 }
 
 end

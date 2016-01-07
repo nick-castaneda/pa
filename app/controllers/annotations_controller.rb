@@ -6,8 +6,12 @@ class AnnotationsController < ApplicationController
 
 
   def new
-    @user = current_user
-    @annotation = Annotation.new(user_id: @user.id, transcript_id: $tran_id)
+    if logged_in?
+      @user = current_user
+      @annotation = Annotation.new(user_id: @user.id, transcript_id: $tran_id)
+    else
+      logged_in_user
+    end
   end
   def create
     @annotation = Annotation.new(annotation_params)
