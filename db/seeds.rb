@@ -9,7 +9,7 @@ Party.create(name: "Green")
 
 
 User.create(
-  name: "Nick Castaneda",
+  name: "Nick Casta\ñeda",
   email: "npcastaneda@gmail.com",
   password: "password",
   password_confirmation: "password",
@@ -19,30 +19,8 @@ User.create(
   state: "CA",
   admin: true
 )
-User.create(
-  name: "Kanye West",
-  email: "kanye@hotmail.com",
-  password: "password",
-  password_confirmation: "password",
-  prof_pic_url: "http://www.mtv.com/shared/promoimages/bands/w/west_kanye/a_z/kanye_west_2010.jpg",
-  party_id: 2,
-  city: "Chicago",
-  state: "IL",
-  admin: false
-)
-User.create(
-  name: "Sarah Palin",
-  email: "palin@aol.com",
-  password: "password",
-  password_confirmation: "password",
-  prof_pic_url: "http://www.pilgrimstudios.com/wp-content/uploads/2014/03/Palin_Sarah_PROMOPIC.jpg",
-  party_id: 3,
-  city: "Wasilla",
-  state: "AK",
-  admin: false
-)
 
-47.times do |n|
+19.times do |n|
   User.create(
     name: Faker::Name.name,
     email: Faker::Internet.email,
@@ -56,16 +34,83 @@ User.create(
 end
 
 users = User.all
-2.times do
-    users.each { |user| user.transcripts.create!(
-      title: Faker::Company.buzzword,
-      content: Faker::Lorem.paragraph,
-      date: Faker::Date.between(100.days.ago, Date.today)
-    ) }
+5.times do
+  users.each { |user| user.transcripts.create!(
+    title: Faker::Company.buzzword,
+    content: Faker::Lorem.paragraphs(5),
+    date: Faker::Date.between(100.days.ago, Date.today)
+  ) }
 end
 users[0].transcripts.create!(
-  title: "Trump - Immigration Commercial",
-  content: "I’m Donald Trump and I approve this message. The politicians can pretend it’s something else but Donald Trump calls it radical Islamic Terrorism. That’s why he’s calling for a temporary shutdown of Muslims entering the United States until we can figure out what’s going on. He’ll quickly cut the head off ISIS and he’ll take their oil. And he’ll stop the illegal immigration by building a wall on our southern border that Mexico will pay for. We will make America great again.",
+  title: "Fourth 2016 Republican Debate",
+  content: "BAKER: Tonight's rules are simple. Up to 90 second for each answer. One minute for each follow-up response. And if a candidate goes over their allotted time, you'll here this.
+CAVUTO: It sounds like a game show but it's not.
+Now I would be remiss if I did not acknowledge the elephant in the room, and I'm not talking about your party's fine symbol. I'm talking about the purpose of tonight's debate.
+The economy and what each of you would do to improve it. No more, no less. We are focused on those issues, and what you have said on those issues in your words and what your opponents have said in their words about your words. That is the agenda tonight. How each of you plans to make America better tomorrow. And so we begin. Candidates, as we gather tonight in this very august theater, just outside and across the country, picketers are gathering as well. They're demanding an immediate hike in the minimum wage to $15 an hour. Just a few hours ago, near Governor Andrew Cuomo proposed doing the same for all state workers, the first governor to do so.
+Mr. Trump, as the leading presidential candidate on this stage and one whose tax plan exempts couples making up to $50,000 a year from paying any federal income taxes at all, are you sympathetic to the protesters cause since a $15 wage works out to about $31,000 a year?
+TRUMP: I can't be Neil. And the and the reason I can't be is that we are a country that is being beaten on every front economically, militarily. There is nothing that we do now to win. We don't win anymore. Our taxes are too high. I've come up with a tax plan that many, many people like very much. It's going to be a tremendous plan. I think it'll make our country and our economy very dynamic.
+But, taxes too high, wages too high, we're not going to be able to compete against the world. I hate to say it, but we have to leave it the way it is. People have to go out, they have to work really hard and have to get into that upper stratum. But we can not do this if we are going to compete with the rest of the world. We just can't do it.
+CAVUTO: So do not raise the minimum wage?
+TRUMP: I would not do it.
+(APPLAUSE)
+CAVUTO: Dr. Carson, you have long bemoaned this lackluster recovery. And this Facebook map show Americans share your concern. The green represents how the jobs issue is resonating all across the nation, especially here in the state of Wisconsin.
+You suggested one minimum wage does not fit all, and that perhaps we should offer a lower or starter wage for young people. Those protesters outside are looking for $15 and nothing less. Where are you?
+CARSON: Well, first of all, delighted to be here. My family's here, and my little granddaughter, who's three years old, said she wanted to come to the debate. So this is very cool.
+As far as the minimum wage is concerned, people need to be educated on the minimum wage. Every time we raise the minimum wage, the number of jobless people increases.
+It's particularly a problem in the black community. Only 19.8 percent of black teenagers have a job, who are looking for one. You know, that -- and that's because of those high wages. If you lower those wages, that comes down.
+You know, I can remember, as a youngster -- you know, my first job working in a laboratory as a lab assistant, and multiple other jobs. But I would not have gotten those jobs if someone had to pay me a large amount of money.
+But what I did gain from those jobs is a tremendous amount of experience, and how to operate in the world and how to relate to different people, and how to become a responsible individual. And that's what gave me what I needed to ascend the ladder of opportunity in this country.
+That's what we need to be thinking about. How do we allow people to ascend the ladder of opportunity, rather than how do we give them everything and keep them dependent?
+(APPLAUSE)
+CAVUTO: So, sir, just to be clear, you would not raise it?
+CARSON: I would not raise it. I would not raise it, specifically because I'm interested in making sure that people are able to enter the job market and take advantage of opportunities.
+(APPLAUSE)
+CAVUTO: Senator Rubio, you called the recent Democratic debate in Las Vegas a night of giveaways, including free health care, free college and a host of other government-paid benefits. Since you aren't a fan of all they're giving away, tell us tonight what you would take back.
+RUBIO: Well, let me begin by answering both the first question and this one, because they're related. As I've said many times before, my parents were never rich people. My father was a bartender. My mother was a maid. They worked for a living. But they were successful people, because, despite the fact that they weren't well educated and had those jobs, they made enough money to buy a home in a safe and stable neighborhood, retire with dignity, leave all four of their children better off than themselves.
+We call that the American dream, but in fact, it's a universal dream of a better life that people have all over the world. It is a reminder that every country in the world has rich people.
+What makes America special is that we have millions and millions of people that are not rich, that through hard work and perseverance are able to be successful.
+The problem is that today people are not successful working as hard as ever because the economy is not providing jobs that pay enough. If I thought that raising the minimum wage was the best way to help people increase their pay, I would be all for it, but it isn't. In the 20th century, it's a disaster.
+If you raise the minimum wage, you're going to make people more expensive than a machine. And that means all this automation that's replacing jobs and people right now is only going to be accelerated.
+Here's the best way to raise wages. Make America the best place in the world to start a business or expand an existing business, tax reform and regulatory reform, bring our debt under control, fully utilize our energy resources so we can reinvigorate manufacturing, repeal and replace Obamacare, and make higher education faster and easier to access, especially vocational training. For the life of me, I don't know why we have stigmatized vocational education. Welders make more money than philosophers. We need more welders and less philosophers.
+(APPLAUSE)
+If we do that -- and if we do this -- if we do this, we will be able to increase wages for millions of Americans and we will be able to leave everyone better off without making anyone worse off.
+CAVUTO: Thank you, Senator Rubio.
+(APPLAUSE)
+BARTIROMO: We've asked people on Facebook to submit their questions for the candidates. Seth Bell wrote, 'We are approaching $20 trillion in national debt. Specifically, what plans do you have to cut federal spending?'' Governor Kasich, you have spoken much about your success in balancing the budget under President Clinton. Today the national debt is at record highs and growing unsustainably. Interest will be the fastest-growing part of the federal budget, tripling over the next 10 years. Social Security, the lifeline of millions of American seniors, is rushing toward insolvency. With all of the tax plans presented tonight, estimated to cost anywhere between $2 trillion and $12 trillion over a decade, what specific steps will you take to balance the budget?
+KASICH: First of all, let me just say that, in the state of Ohio -- and I'm the only acting executive on -- on this stage today -- we do have a moderate increase in the minimum wage. And I got to tell you, my father carried mail on his back. His father was a coal miner. He died of black lung. He was losing his eyesight. My mother's mother lived with us. She could barely speak English. I come from a town where if the wind blew the wrong way, people found themselves out of work. An economic theory is fine, but you know what? People need help.
+Now, I have a plan that, in fact, would cut taxes, but not $11 trillion or $12 trillion that would put my children further in debt. I have a plan that would not only cut taxes, lower the income tax rate for individuals, lower the tax for businesses so businesses will compete here and not move operations overseas, and also a plan -- the only plan of anybody standing on this stage to get us to a balanced budget by the end of a second term.
+And, you know, the simple fact of the matter is, we hear a lot of promises in this debate, a lot of promises about these tax cuts or tax schemes sometimes that I call them. Hillary and the Democrats promise everything on the spending side. We've got to be responsible about what we propose on the tax side.
+Yes, lower taxes, lower spending. My website, JohnKasich.com, will show you exactly how we balance the budget. I balanced the budget in Washington as a chief architect, and I have balanced it in Ohio for one reason. When you balance the budget and you cut taxes, people get work.
+And our most important moral purpose as leaders in the political system is to make sure we create an environment for job creation so people can live their dreams and realize their God-given potential. That's why it's so important.
+And for those at the bottom, we've got to do what we can to train them so they can move up. But to just look the other way is not acceptable, because, you know what, as the governor of Ohio I have to deal with real challenges, and we've gotten it done in our state, and I will do it for America.
+(APPLAUSE)
+BARTIROMO: Did you want to name any specific steps, sir?
+KASICH: Sure. We would move the Medicare system from a 7 percent growth down to about a 5 percent growth. And I have a whole series of ways to do that. In Ohio, we reduced Medicaid funding for the poor from 10 percent to 2.5 percent, didn't cut one benefit or didn't take anybody off the rolls. Why? Because we're innovators. I've been an innovator my entire career. And I really don't care what special interests or lobbyists have to say. I have a job to do when I take over a public office. Now, we freeze non-defense discretionary for eight years. We also put an increase in defense spending. Our tax cuts balance out. And at the end of the day, we will get to a balanced budget.
+And I want everybody here to know, when I was Budget Committee chairman in Washington, I stepped on every toe in that town, and we got to a balanced budget, and we had enormous job growth. And as governor of Ohio, we went from 350,000 lost jobs to a gain of 347,000 jobs.
+BARTIROMO: Thank you, sir.
+KASICH: I'll do it in Washington. I've done it twice; I'll do it thrice for the United States of America.
+BARTIROMO: Senator Cruz, the International Monetary Fund recently cut its expectations for economic growth. Many economists expect a recession to hit the U.S. within the next year due to the weakening of manufacturing. The next president will have to deal with it. You say tax reform is a powerful lever to spur economic expansion. You're calling for a 10 percent income tax and a 16 percent business tax. What other elements do you need in this plan to actually create jobs?
+CRUZ: Well, Maria, it's great to be with you. It's great to be here in Milwaukee. You know, the question you asked really I think is the most important question any of us can have -- face, which is, how do we get the economy growing? How do we bring back economic growth?
+Because economic growth, it's foundational to every other challenge we have. As you rightly noted, from 2008 to today, our economy has grown 1.2 percent a year on average. The Obama economy is a disaster, and the IMF is telling us this is a new normal. It doesn't have to be.
+If you look at the history of America, there are three levers that government has had to facilitate economic growth. The first is tax reform. And as you noted, I have rolled out a bold and simple flat tax: 10 percent for every American that would produce booming growth and 4.9 million new jobs within a decade.
+The second element is regulatory reform, pulling back the armies of regulators that have descended like locusts on small businesses.
+And the third element is sound money. Every time we've pursued all three of those -- whether in the 1920s with Calvin Coolidge or the 1960s with JFK or the 1980s with Ronald Reagan -- the result has been incredible economic growth. We have done it before, and with leadership, we can do it again.
+(APPLAUSE)
+BARTIROMO: Thank you, sir.
+KASICH: Excuse me.
+BARTIROMO: Governor Bush...
+KASICH: Yeah, I would like to make a comment.
+BUSH: You've already made two comments, John. It's my turn.
+BARTIROMO: We have more questions for you, Governor Kasich, coming up. We have more questions for you, Governor Kasich.
+BUSH: I got about four minutes in the last debate. I'm going to get my question right now.
+KASICH: I appreciate it, Jeb. I'm all of you. But I want at some point to talk about a value-added tax and $11 trillion, $12 trillion tax cuts that will put our kids way deeper in the hole than they have been at this point. So I would like to talk about it at some point, because that's what leadership is.
+BARTIROMO: We will -- we will certainly get to that. Governor Bush?
+BUSH: Yes.
+BARTIROMO: Almost 40 percent of Americans are without a job and are not looking. Many have given up. That's what the participation rate tells us. You've said your policies will drive the economy back to 4 percent growth, which we haven't seen since the year 2000. What specific regulations would you change? And how will that lead to jobs and growth?
+BUSH: First of all, we could get to 4 percent growth. The new normal of 2 percent puts huge demands on government. The reason why we have structural deficits is that more and more people are relying on government and the growth that we don't have makes -- makes the deficit grow.
+A 4 percent growth strategy starts with tax reform. And the proposal that I've laid out is the one the Wall Street Journal editorial board has said is the most pro-growth of all the proposals out there. We cut the -- we eliminate a lot of deductions and cut the rates down. A corporate rate of 20 percent, which puts us 5 percent above -- below that of China, and allows us full expensing of investing. It would create an explosion of investment back into this country, creating higher-wage jobs, and so that's part of it.
+On the regulatory side I think we need to repeal every rule that Barack Obama has in terms of work in progress, every one of them.",
+
   date: "20160104"
 )
 users[1].transcripts.create!(
@@ -150,8 +195,21 @@ users[2].transcripts.create!(
     You are looking at a guy undisputably, who has the most unusual political history of anybody in the United States Congress.
     I have run, it’s not only that I am the longest serving independent in the history of he United States Congress, I have run for statewide office and I got one percent of the vote. I don’t know if I should be proud of that, but my last election, I got 71 percent of the vote. The point is, that’s not the right question.
     The question is, if you raise the issues that are on the hearts and minds of the American people, if you try to put a movement together that says, we have got to stand together as a people and say that, this capitol, this beautiful capitol, our country belonged to all of us, and not the billionaire class, that is not raising an issue. That is winning elections. That is where the American people are.",
-  date: "20160104"
+  date: "20151110"
 )
+transcripts = Transcript.all
+
+
+15.times do
+  word = Faker::Number.between(1, 100)
+  transcripts.each { |transcript| transcript.annotations.create!(
+    comment: Faker::Lorem.paragraphs(2),
+    link: "www.wikipedia.com",
+    user_id: transcript.user_id,
+    start: word,
+    :end => word
+  ) }
+end
 
 
 

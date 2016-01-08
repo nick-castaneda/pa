@@ -7,7 +7,9 @@ title allows us to grab and edit individual posts. -->
 <li id="transcript-<%=transcript.id %>">
   <h3> <%= link_to transcript.title, "/transcripts/#{transcript.id}" %> </h3>
   <h5 class="user">Posted by: <%= link_to transcript.user.name, transcript.user %></h5>
-  <p class="content"><%= transcript.content %></p>
+  <p class="content">
+    <%= transcript.content.split(' ')[0, 50].join(' ') %> ...
+  </p>
   <h6 class="timestamp">Posted <%= time_ago_in_words(transcript.created_at) %> ago.</h6>
 </li>
 
