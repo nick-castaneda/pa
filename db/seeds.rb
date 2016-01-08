@@ -205,7 +205,7 @@ transcripts = Transcript.all
   transcripts.each { |transcript| transcript.annotations.create!(
     comment: Faker::Lorem.paragraphs(2),
     link: "www.wikipedia.com",
-    user_id: transcript.user_id,
+    user_id: Faker::Number.between(1, 20),
     start: word,
     :end => word
   ) }
