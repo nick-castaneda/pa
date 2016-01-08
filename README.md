@@ -122,6 +122,8 @@ The models currently used in Poli-Annotate are: User, Transcript, Annotation, an
 ![Transcript Page](http://i.imgur.com/UNmV3Lq.jpg?1)
 
 ##Links and References
+A version of this application can be found on the Heroku website at [this address](https://politate.herokuapp.com/).
+
 The Trello Board for my site can be found [here](https://trello.com/b/3ZZIIIZf/poli-annotate).
 
 Head over to Nick Castañeda's [personal site](http://www.nick-castaneda.com) or [GitHub page](https://github.com/nick-castaneda) to see more of this developer's projects.
