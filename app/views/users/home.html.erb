@@ -1,4 +1,11 @@
 <% provide(:title, "Home") %>
+<% content_for :for_head do %>
+<style>
+body{
+background-color: black;
+}
+</style>
+<%end%>
 
 <main>
   <div class="container" id='login' data-toggle='modal' data-target='#login-modal'>

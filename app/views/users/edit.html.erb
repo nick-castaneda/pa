@@ -9,7 +9,7 @@
         <%= render 'shared/error_messages' %>
         <%= user.text_field :name, class: 'black_text' %>
         <%= user.text_field :prof_pic_url, class: 'black_text' %>
-        <%= user.radio_button :party_id, class: 'black_text' %>
+        <%= user.text_field :party_id, class: 'black_text' %>
         <%= user.text_field :city, class: 'black_text' %>
         <%= user.text_field :state, class: 'black_text' %>
         <%= user.submit "Update!", class: 'btn btn-primary' %>
