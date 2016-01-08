@@ -1,47 +1,23 @@
 <% provide(:title, "Annotate #{$tran_title}") %>
 <%= render 'layouts/header' %>
+
 <div class="container">
   <!-- For error messages -->
-  <% flash.each do |message_type, message| %>
-    <div class="alert alert-<%= message_type %>"><%= message %></div>
-  <% end %>
-
-
-
   <div class='col-md-3'></div>
-  <div class='col-md-5'>
-  <h1>New Annotation</h1>
+  <div class='col-md-6'>
+    <div class="form-border">
+      <h1>New Annotation</h1>
 
-  <!-- Each tag in this erb form has a name set to "user[attribute]" -->
-  <%= form_for(@annotation) do |annotation| %>
-    <%= render 'shared/error_messages' %>
-
-    <!-- FIGURE OUT EXACTLY HOW FLASH WORKS -->
-
-    <div>
-      <%= annotation.label :comment %>
-      <%= annotation.text_field :comment, class: 'black_text' %>
+    <!-- Each tag in this erb form has a name set to "user[attribute]" -->
+      <%= render 'shared/error_messages' %>
+      <%= bootstrap_form_for(@annotation) do |annotation| %>
+        <%= annotation.text_field :comment, class: 'black_text' %>
+        <%= annotation.text_field :link, class: 'black_text' %>
+        <%= annotation.hidden_field :start, class: 'black_text', value: params[:start] %>
+        <%= annotation.hidden_field :end, class: 'black_text', value: params[:end] %>
+        <%= annotation.submit "Submit!", class: "btn btn-primary" %>
+      <% end %>
     </div>
-
-    <div>
-      <%= annotation.label :link %>
-      <%= annotation.text_field :link, class: 'black_text' %>
-    </div>
-
-    <div>
-      <%= annotation.hidden_field :start, class: 'black_text', value: params[:start] %>
-    </div>
-
-    <div>
-      <%= annotation.hidden_field :end, class: 'black_text', value: params[:end] %>
-    </div>
-
-    <div>
-      <%= annotation.submit "Submit!", class: "btn btn-primary" %>
-    </div>
-
-  <% end %>
   </div>
-  <div class='col-md-3'></div>
 
 </div>

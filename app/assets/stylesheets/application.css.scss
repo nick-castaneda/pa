@@ -26,63 +26,103 @@
   box-sizing:         border-box;
 }
 
- // for debug message box
-
-/* Site styles */
+/* Sitewide styles */
 body{
-  background-color: blue;
-  color: white;
+  background-color: #004687;
+  color: black;
   font-family: 'Montserrat', sans-serif;
 }
-.miss_header{
-  margin-top: 100px;
-}
-.black_text{
-  color: black;
-}
 
-/* Modal styles */
+/* Modal and navbar styles */
 .modal-content{
-  background-color: grey
+  background-color: #4e5964;
+  color: white;
+}
+.modal-sm{
+  margin-top: 200px;
 }
 .modal-header{
   text-align: center;
 }
+.navbar{
+  .dropdown-toggle{
+    color: white;
+  }
+}
 
-
-
-/* Index page */
-#title_div{
-  margin-top: 20%;
+/* forms (This whole section is copied from the Hartl Rails tutorial) */
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
 }
-h1{
-  font-size: 70px;
-  text-weight: bold;
-  text-align: center;
+input {
+  height: auto !important; // da fuck?
 }
-#subtitle_div{
-  text-align: center;
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
 }
-h3{
-  font-size: 30px;
-  margin-bottom: 30px;
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
 }
-#start_links{
-  text-align: center;
-}
-#for_admin{
-  margin: 0 auto;
-  margin-top: 300px;
-  width: 500px;
-  text-align: center;
-}
-a{
+.col-md-6{
   font-size: 15px;
+  margin: 1px;
+  a{
+    color: black;
+  }
+  h1{
+    text-align: center;
+    text-decoration: underline;
+  }
+}
+.form-border{
+  border: 1px solid black;
+  padding: 30px;
+  background-color: #B6B6B6;
+  margin: 30px 0;
+}
+
+/* Welcome page */
+main {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.70) 0%, rgba(0, 0, 0, .70) 100%), url('/assets/flag.jpg');
+  margin: -30px -140px -80px -140px;
+  background-size: 100% 100%;
   color: white;
 }
-.f_right{
-  color: blue;
+#title_div{
+  margin: 28% 12%;
+  text-align: center;
+  h1{
+    font-size: 80px;
+    text-weight: bold;
+  }
+  #subtitle_div{
+    text-align: center;
+    h3{
+      font-size: 40px;
+      margin-bottom: 30px;
+    }
+  }
 }
+
+/* New User Page */
+
+
+/* Edit User
+
+
+
+
+
 
 /* Show page */
 #prof_image_div{
@@ -123,30 +163,7 @@ a{
   }
 }
 
-/* forms (This whole section is copied from the Hartl Rails tutorial) */
 
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
-  @include box_sizing;
-}
-input {
-  height: auto !important; // da fuck?
-}
-#error_explanation {
-  color: red;
-  ul {
-    color: red;
-    margin: 0 0 30px 0;
-  }
-}
-.field_with_errors {
-  @extend .has-error;
-  .form-control {
-    color: $state-danger-text;
-  }
-}
 
 /* transcripts */
 

@@ -30,11 +30,11 @@
         <li><%= link_to "Post Transcript", new_transcript_path %></li>
         <li><%= link_to "Edit Profile", edit_user_path %></li>
         <li><%= link_to "Log out", logout_path, method: :delete %></li>
-        <% if current_user.admin? %>
-          <li><%= link_to "Delete Profile", user_path, method: :delete %></li>
-        <% end %>
       <% elsif !logged_in? %>
         <li><%= link_to "Login", login_path %></li>
+      <% end %>
+      <% if current_user.admin? %>
+        <li><%= link_to "Delete Profile", user_path, method: :delete %></li>
       <% end %>
       </ul>
     <div>

@@ -41,7 +41,7 @@
         <% else %>
           <li><%= link_to "Users", users_path %></li>
           <li><%= link_to "Transcripts", transcript_index_path %></li>
-          <li><%= link_to "Log in", login_path %></li>
+          <li><a href="#"><span id='login' data-toggle='modal' data-target='#login-modal'>Login</span></a></li>
         <% end %>
       </ul>
     </nav>

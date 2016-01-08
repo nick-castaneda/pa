@@ -1,58 +1,23 @@
 <% provide(:title, "Registration") %>
 
 <div class='col-md-3'></div>
-<div class='col-md-5'>
-<h1>Register</h1>
+<div class='col-md-6' id="new_user_div">
+  <div class="form-border">
+    <h1>Register</h1>
 
-<!-- Each tag in this erb form has a name set to "user[attribute]" -->
-<%= form_for(@user, url: new_user_path) do |user| %>
-  <%= render 'shared/error_messages' %>
-
-  <div>
-    <%= user.label :name %>
-    <%= user.text_field :name, class: 'black_text' %>
+    <!-- Each tag in this erb form has a name set to "user[attribute]" -->
+    <%= bootstrap_form_for(@user, url: new_user_path) do |user| %>
+      <%= render 'shared/error_messages' %>
+        <%= user.text_field :name, class: 'black_text' %>
+        <%= user.email_field :email, class: 'black_text' %>
+        <%= user.password_field :password, class: 'black_text' %>
+        <%= user.password_field :password_confirmation, class: 'black_text' %>
+        <%= user.text_field :prof_pic_url, class: 'black_text' %>
+        <%= user.text_field :party_id, class: 'black_text' %>
+        <%= user.text_field :city, class: 'black_text' %>
+        <%= user.text_field :state, class: 'black_text' %>
+        <%= user.submit "Submit!", class: "btn btn-primary" %>
+    <% end %>
   </div>
-
-  <div>
-    <%= user.label :email %>
-    <%= user.email_field :email, class: 'black_text' %>
-  </div>
-
-  <div>
-    <%= user.label :password %>
-    <%= user.password_field :password, class: 'black_text' %>
-  </div>
-
-  <div>
-    <%= user.label :password_confirmation, "Confirmation" %>
-    <%= user.password_field :password_confirmation, class: 'black_text' %>
-  </div>
-
-  <div>
-    <%= user.label :prof_pic_url %>
-    <%= user.text_field :prof_pic_url, class: 'black_text' %>
-  </div>
-
-  <div>
-    <%= user.label :party_id %>
-    <%= user.text_field :party_id, class: 'black_text' %>
-  </div>
-
-  <div>
-    <%= user.label :city %>
-    <%= user.text_field :city, class: 'black_text' %>
-  </div>
-
-  <div>
-    <%= user.label :state %>
-    <%= user.text_field :state, class: 'black_text' %>
-  </div>
-
-
-  <div>
-    <%= user.submit "Submit!", class: "btn btn-primary" %>
-  </div>
-
-<% end %>
 </div>
 <div class='col-md-3'></div>

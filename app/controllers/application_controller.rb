@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include TranscriptsHelper
 
+  def landing_page
+    @disable_nav = true
+  end
 
 private
 

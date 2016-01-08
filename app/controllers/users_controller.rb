@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def home
+    landing_page
   end
 
   # Before_action is a 'before filter' that requires users to be logged
