@@ -11,7 +11,7 @@
     <!-- Each tag in this erb form has a name set to "user[attribute]" -->
       <%= render 'shared/error_messages' %>
       <%= bootstrap_form_for(@annotation) do |annotation| %>
-        <%= annotation.text_field :comment, class: 'black_text' %>
+        <%= annotation.text_area :comment, class: 'black_text' %>
         <%= annotation.text_field :link, class: 'black_text', prepend: "http://" %>
         <%= annotation.hidden_field :start, class: 'black_text', value: params[:start] %>
         <%= annotation.hidden_field :end, class: 'black_text', value: params[:end] %>

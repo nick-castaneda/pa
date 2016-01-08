@@ -5,14 +5,10 @@ title allows us to grab and edit individual posts. -->
 
 
 <li id="transcript-<%=transcript.id %>">
-
-  <!-- Optional user picture on transcript post -->
   <h3> <%= link_to transcript.title, "/transcripts/#{transcript.id}" %> </h3>
-  <h4 class="user"><%= link_to transcript.user.name, transcript.user %></h4>
-  <h5 class="event_date"><%=  %></h5>
+  <h5 class="user">Posted by: <%= link_to transcript.user.name, transcript.user %></h5>
   <p class="content"><%= transcript.content %></p>
   <h6 class="timestamp">Posted <%= time_ago_in_words(transcript.created_at) %> ago.</h6>
 </li>
 
 
-<!-- link_to transcript.date-->

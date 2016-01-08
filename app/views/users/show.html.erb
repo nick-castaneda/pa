@@ -1,43 +1,42 @@
 <% provide(:title, @user.name) %>
 
-<div class="container miss_header">
-  <div class="row">
-    <h1><%= @user.name %></h1>
-    <!-- User info div -->
-    <div class="col-md-5 col-md-offset-2">
-      <br>
-      <p>Email: <%= @user.email %></p><br>
-      <p>Location: <%= @user.city %>, <%= @user.state %></p><br>
-      <p>Party: <%= @user.party.name %></p><br>
-      <br><br>
-      <!-- If the user has any transcripts, render each in a list. -->
-      <% if @user.transcripts.any? %>
-        <h3>Transcripts</h3>
-        <ol class="transcripts">
-          <%= render @transcripts %>
-        </ol>
-        <%= will_paginate @transcripts %>
-      <% end %>
-    </div>
-    <!-- Sidebar -->
-    <div class="col-md-3">
-      <div id="prof_image_div"><%= image_tag @user.prof_pic_url, id: "prof_image" %></div>
-      <br>
-      <ul>
-      <!-- If a user is logged in, show edit, delete, and logout links.
-      If not, show login link -->
-      <% if logged_in? && current_user?(@user)%>
-        <li><%= link_to "Post Transcript", new_transcript_path %></li>
-        <li><%= link_to "Edit Profile", edit_user_path %></li>
-        <li><%= link_to "Log out", logout_path, method: :delete %></li>
-      <% elsif !logged_in? %>
-        <li><%= link_to "Login", login_path %></li>
-      <% end %>
-      <% if current_user.admin? %>
-        <li><%= link_to "Delete Profile", user_path, method: :delete %></li>
-      <% end %>
-      </ul>
-    <div>
-
+<div class="col-md-1"></div>
+<div class="row content-border col-md-10" id="prof_box">
+  <h1><%= @user.name %></h1>
+  <br><br>
+  <!-- Sidebar -->
+  <div class="col-md-4">
+    <div id="prof_image_div"><%= image_tag @user.prof_pic_url, id: "prof_image" %></div>
+    <br>
+    <p class="labe">Email: </p><p><%= @user.email %></p>
+    <p class="labe">Location: </p><p><%= @user.city %>, <%= @user.state %></p>
+    <p class="labe">Party: </p><p><%= @user.party.name %></p>
+    <hr>
+    <ul>
+    <!-- If a user is logged in, show edit, delete, and logout links.
+    If not, show login link -->
+    <% if logged_in? && current_user?(@user)%>
+      <li><%= link_to "Post Transcript", new_transcript_path %></li>
+      <li><%= link_to "Edit Profile", edit_user_path %></li>
+      <li><%= link_to "Log out", logout_path, method: :delete %></li>
+    <% elsif !logged_in? %>
+      <li><%= link_to "Login", login_path %></li>
+    <% end %>
+    <% if current_user.admin? %>
+      <li><%= link_to "Delete Profile", user_path, method: :delete %></li>
+    <% end %>
+    </ul>
   </div>
+  <div class="col-md-8">
+    <!-- If the user has any transcripts, render each in a list. -->
+    <% if @user.transcripts.any? %>
+      <h4>Transcripts</h4>
+      <ol class="transcripts">
+        <%= render @transcripts %>
+      </ol>
+      <%= will_paginate @transcripts %>
+    <% end %>
+  </div>
+  <div>
 </div>
+
