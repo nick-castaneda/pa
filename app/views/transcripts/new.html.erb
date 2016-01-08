@@ -8,8 +8,8 @@
     <%= bootstrap_form_for(@transcript) do |transcript| %>
       <%= render 'shared/error_messages' %>
         <%= transcript.text_field :title, class: 'black_text' %>
-        <%= transcript.text_field :date, class: 'black_text' %>
-        <%= transcript.text_field :content, class: 'black_text big_box' %>
+        <%= transcript.date_select :date, class: 'black_text' %>
+        <%= transcript.text_area :content, class: 'black_text big_box' %>
         <%= transcript.submit "Submit!", class: "btn btn-primary" %>
     <% end %>
   </div>

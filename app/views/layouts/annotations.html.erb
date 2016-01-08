@@ -14,6 +14,9 @@
   <link rel="shortcut icon" href="app/assets/images/tab_icon.ico">
   <!-- Sets up jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <% if content_for? :for_head2 %>
+    <%= yield :for_head2 %>
+  <% end %>
 </head>
 <body>
 

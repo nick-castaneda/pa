@@ -15,9 +15,9 @@
  */
 
 /* Eventually I need to clean this up or split it into sep files      */
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 
 /* Mixins and variables */
 @mixin box_sizing {
@@ -26,11 +26,22 @@
   box-sizing:         border-box;
 }
 
+
 /* Sitewide styles */
 body{
   background-color: #004687;
   color: black;
   font-family: 'Montserrat', sans-serif;
+}
+.content-border{
+  border: 1px solid black;
+  padding: 30px;
+  background-color: #B6B6B6;
+  margin: 10px 0 50px 0;
+}
+h1{
+  text-align: center;
+  text-decoration: underline;
 }
 
 /* Modal and navbar styles */
@@ -49,6 +60,21 @@ body{
     color: white;
   }
 }
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
 
 /* forms (This whole section is copied from the Hartl Rails tutorial) */
 input, textarea, select, .uneditable-input {
@@ -79,10 +105,6 @@ input {
   a{
     color: black;
   }
-  h1{
-    text-align: center;
-    text-decoration: underline;
-  }
 }
 .form-border{
   border: 1px solid black;
@@ -90,6 +112,7 @@ input {
   background-color: #B6B6B6;
   margin: 30px 0;
 }
+
 
 /* Welcome page */
 main {
@@ -114,10 +137,62 @@ main {
   }
 }
 
-/* New User Page */
+
+/* Transcript Show page */
+#show_tran{
+  button, h5{
+    display: inline-block;
+    margin: 0 5px;
+  }
+  hr{
+    border-color: black;
+  }
+  h3{
+    text-align: center;
+  }
+}
+#annotate-box{
+  height: 650px;
+  width: 30%;
+  position: fixed;
+  h3{
+    text-decoration: underline;
+    text-align: center;
+  }
+}
+iframe{
+  border:none;
+}
+span:hover{
+  cursor: pointer;
+}
+.pointer{
+
+  &:hover{
+    cursor:pointer
+  }
+}
+.red_text{
+  color: red;
+  text-decoration: underline;
+}
+.yellow_text{
+  background-color: yellow;
+}
 
 
-/* Edit User
+/* Annotation show page */
+.anno_comment{
+  font-size: 16px;
+}
+.anno_link{
+  color: blue;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+
 
 
 
@@ -144,22 +219,6 @@ main {
     overflow: auto;
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
-  }
-}
-
-/* logo */
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  &:hover {
-    color: #fff;
-    text-decoration: none;
   }
 }
 
@@ -193,22 +252,7 @@ main {
   }
 }
 
-/* Words */
-span:hover{
-  cursor: pointer;
-}
-.pointer{
 
-  &:hover{
-    cursor:pointer
-  }
-}
-.red_text{
-  color: red;
-}
-.yellow_text{
-  background-color: yellow;
-}
 
 
 /* miscellaneous */
@@ -220,3 +264,13 @@ span:hover{
   @include box_sizing;
 }
 
+
+
+
+
+
+/* New User page */
+/* Edit User page */
+/* Login page */
+/* New Annotation page */
+/* New Transcript page */

@@ -10,7 +10,7 @@
       // If you click a word in the content, the "red_text" class is
       // added.
       $("span").on("click", function(event) {
-        if (!$(this).hasClass("red_text")){
+        if (!$(this).hasClass("red_text") && !$(this).is("#new_anno")){
           $(this).toggleClass( "yellow_text" );
         }
       });
@@ -29,7 +29,7 @@
           // Creates an iframe link for each word
           $("#word_<%= i %>").click(function () {
             $("iframe").remove()
-            $(".col-md-4").append(src<%= x.id %>);
+            $("#annotate-box").append(src<%= x.id %>);
           });
 
         <% end %>
@@ -99,22 +99,28 @@
 
 
 <div class="row">
-  <div class="col-md-7 col-md-offset-1">
-    <h1><%= @transcript.title %></h1>
-    <h3><%= @transcript.date %></h3>
-    <h5>Posted by: <%= link_to @transcript.user.name, @transcript.user %></h5>
-    <p>
-      <% for i in 0..@word_array.length %>
-        <span id=<%= "word_#{i}" %>><%= @word_array[i] %></span>
-      <% end %>
-    </p>
-    <h3 id='new_anno'>Annotate!</h3>
-
+  <div class="col-md-8">
+    <div class="content-border" id="show_tran">
+      <h1><%= @transcript.title %></h1>
+      <h3>Date: <%= @transcript.date.strftime('%b %d, %Y') %></h3>
+      <h5>Posted by: <%= link_to @transcript.user.name, @transcript.user %></h5>
+      <hr>
+      <p>
+        <% for i in 0..@word_array.length %>
+          <span id=<%= "word_#{i}" %>><%= @word_array[i] %></span>
+        <% end %>
+      </p>
+      <hr>
+      <h5>Select the phrase or sentence you would like to comment on and then click: </h5>
+      <button id='new_anno' type="button" class='btn-primary'> Annotate!</button>
+    </div>
   </div>
 
   <div class="col-md-4">
+    <div id='annotate-box' class='content-border'>
+      <h3>Annotations</h3>
+    </div>
   </div>
 
 </div>
 
-<!-- window.location.href = '/annotations/new/' + start + '/' + end -->

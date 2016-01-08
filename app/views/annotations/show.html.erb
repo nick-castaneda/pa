@@ -1,16 +1,32 @@
 <% provide(:title, @annotation.transcript.title) %>
+<% content_for :for_head2 do %>
+  <style>
+    body{
+      background-color: #B6B6B6;
+    }
+  </style>
+  <script>
+    var ready;
+    ready = function() {
+      $('.user').on("click", function(event) {
+        window.top.location.href = '/users/<%= @annotation.user.id %>';
+      })
+      $('.citation').on("click", function(event) {
+        window.top.location.href = 'http://<%= @annotation.link %>';
+      })
 
-<div class="row">
-  <div class="col-md-10 col-md-offset-1">
+    }
 
-  <p><%= @annotation.comment %></p>
-  <p><%= @annotation.link %></p>
-  <p><%= link_to @annotation.user.name, @annotation.user %></p>
-  <p><%= @annotation.start %> to <%= @annotation.end %></p>
+    $(document).ready(ready);
+    $(document).on('hi, world', ready)
+  </script>
+<% end %>
+
+<br>
+<p class="anno_comment"><%= @annotation.comment %></p>
+
+<p class="anno_link citation">Citation</p>
+<hr>
+<p class="anno_link user"><%= @annotation.user.name %></p>
 
 
-  <!-- cut eventually -->
-  <p><%= $tran_title %></p>
-
-  </div>
-</div>

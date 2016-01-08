@@ -18,11 +18,11 @@
   <% if content_for? :for_head %>
     <%= yield :for_head %>
   <% end %>
-
 </head>
 <body>
 <%= render 'layouts/header' unless @disable_nav %>
 <%= render "layouts/modal" %>
+<br>
 <div class="container">
 
   <!-- For error messages -->
