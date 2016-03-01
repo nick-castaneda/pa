@@ -89,8 +89,8 @@
     };
 
 
-    $(document).ready(ready);
-    $(document).on('hi, world', ready)
+    // $(document).ready(ready);
+    // $(document).on('hi, world', ready)
 
   </script>
 <% end %>
@@ -107,7 +107,11 @@
       <hr>
       <p>
         <% for i in 0..@word_array.length %>
-          <span id=<%= "word_#{i}" %>><%= @word_array[i] %></span>
+          <% if @word_array[i] == "BREAK" %>
+            <br>
+          <% else %>
+            <span id=<%= "word_#{i}" %>><%= @word_array[i] %></span>
+          <% end %>
         <% end %>
       </p>
       <hr>
@@ -124,3 +128,8 @@
 
 </div>
 
+
+<!-- So loads immediately -->
+<script>
+ready()
+</script>

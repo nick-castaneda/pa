@@ -8,6 +8,7 @@
     <%= bootstrap_form_for(@transcript) do |transcript| %>
       <%= render 'shared/error_messages' %>
         <%= transcript.text_field :title, class: 'black_text' %>
+        <h5><em>For paragraph breaks, insert " BREAK "</em></h5>
         <%= transcript.date_select :date, class: 'black_text' %>
         <%= transcript.text_area :content, class: 'black_text big_box' %>
         <%= transcript.submit "Submit!", class: "btn btn-primary" %>
